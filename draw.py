@@ -57,5 +57,5 @@ class Artist:
                 time.sleep(0.1)
             else:
                 self.diggingStep = 0
-                self.placeImage("textures/default_stone.png", self.getNearestCoord(pygame.mouse.get_pos()))
+                self.placeImage("textures/default_sky.png", self.getNearestCoord(pygame.mouse.get_pos()))
         pygame.display.flip()
