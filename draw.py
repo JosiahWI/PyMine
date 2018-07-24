@@ -1,4 +1,5 @@
 import pygame
+import time
 
 
 class Artist:
@@ -8,7 +9,7 @@ class Artist:
         self.screen = pygame.display.set_mode((400, 400))
         self.white = [255, 255, 255]
         self.screen.fill(self.white)
-        self.digging = True
+        self.digging = False
         self.diggingStep = 0
         self.placed = False
 
@@ -48,4 +49,11 @@ class Artist:
                 
     def update(self):
         self.handleEvents()
+        if self.digging:
+            if self.diggingStep < 5:
+                self.diggingStep += 1
+                time.sleep(0.1)
+            else:
+                self.diggingStep = 0
+                self.placeImage("textures/default_cobble.png", self.getNearestCoord(pygame.mouse.get_pos()))
         pygame.display.flip()
