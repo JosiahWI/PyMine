@@ -1,12 +1,13 @@
 import pygame
 import time
+import settings
 
 
 class Artist:
 
     def __init__(self):
         pygame.init()
-        self.screen = pygame.display.set_mode((400, 400))
+        self.screen = pygame.display.set_mode(settings.screen_size)
         self.white = [255, 255, 255]
         self.screen.fill(self.white)
         self.digging = False
@@ -26,6 +27,7 @@ class Artist:
 
     def placeImage(self, imageFile, coords):
         img = pygame.image.load(imageFile)
+        pygame.transform.scale(img, (16, 16))
         self.screen.blit(img, coords)
         
     def handleEvents(self):
