@@ -7,7 +7,7 @@ class Artist:
 
     def __init__(self):
         pygame.init()
-        self.screen = pygame.display.set_mode(settings.screen_size)
+        self.screen = pygame.display.set_mode(settings.screenSize)
         self.white = [255, 255, 255]
         self.screen.fill(self.white)
         self.digging = False
@@ -27,7 +27,7 @@ class Artist:
 
     def placeImage(self, imageFile, coords):
         img = pygame.image.load(imageFile)
-        pygame.transform.scale(img, (16, 16))
+        img = pygame.transform.scale(img, (settings.imageSize, settings.imageSize))
         self.screen.blit(img, coords)
         
     def handleEvents(self):
@@ -57,5 +57,5 @@ class Artist:
                 time.sleep(0.1)
             else:
                 self.diggingStep = 0
-                self.placeImage("textures/default_cobble.png", self.getNearestCoord(pygame.mouse.get_pos()))
+                self.placeImage("textures/default_air.png", self.getNearestCoord(pygame.mouse.get_pos()))
         pygame.display.flip()

@@ -6,10 +6,10 @@ textures = ['textures/default_acacia_leaves.png', 'textures/default_acacia_tree.
 
 artist = draw.Artist()
 
-for i in range(settings.screen_size[0]/4 - 1):
-    for ii in range(settings.screen_size[1]/4 - 1):
+for i in range(settings.screenSize[0]/(settings.imageSize/2) - 1):
+    for ii in range(settings.screenSize[1]/(settings.imageSize/2) - 1):
         texture = random.choice(textures)
-        artist.placeImage(texture, (i*8, ii*8))
+        artist.placeImage(texture, (i*settings.imageSize, ii*settings.imageSize))
 
 while artist.update() != "Quit":
     pass

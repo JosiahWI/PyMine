@@ -1,1 +1,2 @@
-screen_size = (400, 400)
+screenSize = (400, 400)
+imageSize = 16
