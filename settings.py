@@ -1,2 +1,2 @@
-screenSize = (400, 400)
-imageSize = 16
+screenSize = (600, 500)
+imageSize = 32

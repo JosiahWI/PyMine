@@ -15,14 +15,14 @@ class Artist:
         self.placed = False
 
     def getNearestCoord(self, mousePos):
-        if mousePos[0] % 8 >= 0.5:
-            x = (mousePos[0] // 8) * 8
-        elif mousePos[0] % 8 < 5:
-            x = (mousePos[0] // 8 - 1) * 8
-        if mousePos[1] % 8 >= 0.5:
-            y = (mousePos[1] // 8) * 8
-        elif mousePos[1] % 8 < 5:
-            y = (mousePos[1] // 8 - 1) * 8
+        if mousePos[0] % settings.imageSize >= 0.5:
+            x = (mousePos[0] // settings.imageSize) * settings.imageSize
+        elif mousePos[0] % settings.imageSize < 5:
+            x = (mousePos[0] // settings.imageSize - 1) * settings.imageSize
+        if mousePos[1] % settings.imageSize >= 0.5:
+            y = (mousePos[1] // settings.imageSize) * settings.imageSize
+        elif mousePos[1] % settings.imageSize < 5:
+            y = (mousePos[1] // settings.imageSize - 1) * settings.imageSize
         return (x, y)
 
     def placeImage(self, imageFile, coords):
