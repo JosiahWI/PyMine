@@ -6,7 +6,7 @@ class BlockManager:
     def registerBlock(name, imageFile, onLeftClick, onRightClick):
         self.registeredObjects[name] = BlockDefinition(name, imageFile, onleftClick, onRightClick, data)
         
-    def getDefinition(self):
+    def getDefinition(self, name):
         if name in self.registeredObjects:
             return self.registeredObjects[name]
         else:
@@ -14,12 +14,8 @@ class BlockManager:
         
     def place(self, name, pos):
         definition = self.getDefinition(name)
-        definition.createBlock(pos)
-
-            
-    def remove(self, name, pos):
-        definition = self.getDefinition(name)
-        definition.removeBlock(pos)
+        block = definition.createBlock(pos)
+        return block
         
 
 class BlockDefinition:
@@ -37,9 +33,6 @@ class BlockDefinition:
         obj = Object(self.name, pos)
         self.blockList[pos] = obj
         return obj
-        
-    def removeBlock(self, pos):
-        raise StandardError("removeBlock hasn't been implemented yet.")
         
 class Block:
 

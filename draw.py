@@ -5,7 +5,8 @@ import settings
 
 class Artist:
 
-    def __init__(self):
+    def __init__(self, blockManager):
+        self.blockManager = blockManager
         pygame.init()
         self.screen = pygame.display.set_mode(settings.screenSize)
         self.white = [255, 255, 255]
@@ -25,7 +26,8 @@ class Artist:
             y = (mousePos[1] // settings.imageSize - 1) * settings.imageSize
         return (x, y)
 
-    def placeImage(self, imageFile, coords):
+    def placeImage(self, blockName, imageFile, coords):
+        self.blockManager.place(blockName, coords)
         img = pygame.image.load(imageFile)
         img = pygame.transform.scale(img, (settings.imageSize, settings.imageSize))
         self.screen.blit(img, coords)
@@ -46,7 +48,7 @@ class Artist:
                     self.digging = True
                 if pygame.mouse.get_pressed()[2] and not self.placed:
                     self.placed = True
-                    self.placeImage("textures/default_dirt.png", self.getNearestCoord(event.pos))
+                    self.placeImage("dirt", "textures/default_dirt.png", self.getNearestCoord(event.pos))
                 
                 
     def update(self):
@@ -57,5 +59,5 @@ class Artist:
                 time.sleep(0.1)
             else:
                 self.diggingStep = 0
-                self.placeImage("textures/default_sky.png", self.getNearestCoord(pygame.mouse.get_pos()))
+                self.placeImage("air", "textures/default_sky.png", self.getNearestCoord(pygame.mouse.get_pos()))
         pygame.display.flip()
