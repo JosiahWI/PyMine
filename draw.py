@@ -48,7 +48,8 @@ class Artist:
                     self.digging = True
                 if pygame.mouse.get_pressed()[2] and not self.placed:
                     self.placed = True
-                    self.placeImage("dirt", "textures/default_dirt.png", self.getNearestCoord(event.pos))
+                    blockName = "dirt"
+                    self.placeImage(blockName, self.blockManager.registeredBlocks[blockName].imageFile, self.getNearestCoord(event.pos))
                 
                 
     def update(self):
