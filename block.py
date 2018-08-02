@@ -1,14 +1,14 @@
 class BlockManager:
 
     def __init__(self):
-        self.registeredObjects = {}
+        self.registeredBlocks = {}
         
-    def registerBlock(name, imageFile, onLeftClick, onRightClick):
-        self.registeredObjects[name] = BlockDefinition(name, imageFile, onleftClick, onRightClick, data)
+    def registerBlock(self, name, imageFile, onLeftClick, onRightClick, data):
+        self.registeredBlocks[name] = BlockDefinition(name, imageFile, onLeftClick, onRightClick, data)
         
     def getDefinition(self, name):
-        if name in self.registeredObjects:
-            return self.registeredObjects[name]
+        if name in self.registeredBlocks:
+            return self.registeredBlocks[name]
         else:
             raise StandardError("Block %s has not been registered." % name)
         
@@ -30,9 +30,9 @@ class BlockDefinition:
         
         
     def createBlock(self, pos):
-        obj = Object(self.name, pos)
-        self.blockList[pos] = obj
-        return obj
+        block = Block(self.name, pos)
+        self.blockList[pos] = block
+        return block
         
 class Block:
 
